@@ -1,10 +1,8 @@
-import { IAgentRuntime, Client } from '@elizaos/core';
+declare const AutoClientInterface: {
+    name: string;
+    config: {};
+    start: (runtime: any) => Promise<any>;
+    stop: (_runtime: any) => Promise<void>;
+};
 
-declare class AutoClient {
-    interval: NodeJS.Timeout;
-    runtime: IAgentRuntime;
-    constructor(runtime: IAgentRuntime);
-}
-declare const AutoClientInterface: Client;
-
-export { AutoClient, AutoClientInterface, AutoClientInterface as default };
+export { AutoClientInterface, AutoClientInterface as default };

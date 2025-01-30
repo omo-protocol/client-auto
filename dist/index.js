@@ -1,5 +1,4 @@
-// src/index.ts
-import { elizaLogger } from "@elizaos/core";
+// src/auto-client.ts
 var AutoClient = class {
   interval;
   runtime;
@@ -7,24 +6,24 @@ var AutoClient = class {
     this.runtime = runtime;
     this.interval = setInterval(
       async () => {
-        elizaLogger.log("running auto client...");
+        console.log("running auto client...");
       },
       60 * 60 * 1e3
     );
   }
 };
+
+// src/index.ts
 var AutoClientInterface = {
-  start: async (runtime) => {
-    const client = new AutoClient(runtime);
-    return client;
-  },
+  name: "auto",
+  config: {},
+  start: async (runtime) => new AutoClient(runtime),
   stop: async (_runtime) => {
     console.warn("Direct client does not support stopping yet");
   }
 };
 var index_default = AutoClientInterface;
 export {
-  AutoClient,
   AutoClientInterface,
   index_default as default
 };
