@@ -18,6 +18,8 @@ export class AutoClient {
 }
 
 export const AutoClientInterface: Client = {
+    name: 'auto',
+    config: {},
     start: async (runtime: IAgentRuntime) => {
         const client = new AutoClient(runtime);
         return client;
