@@ -1,6 +1,6 @@
-import { type Client, type IAgentRuntime, elizaLogger } from "@elizaos/core";
+import { type Client, type IAgentRuntime, elizaLogger, type Plugin } from "@elizaos/core";
 
-export class AutoClient {
+class AutoClient {
     interval: NodeJS.Timeout;
     runtime: IAgentRuntime;
 
@@ -15,16 +15,23 @@ export class AutoClient {
             60 * 60 * 1000
         ); // 1 hour in milliseconds
     }
+
+    async stop() {
+        clearInterval(this.interval);
+    }
 }
 
-export const AutoClientInterface: Client = {
+const AutoClientInterface: Client = {
+    name: 'auto',
     start: async (runtime: IAgentRuntime) => {
         const client = new AutoClient(runtime);
         return client;
     },
-    stop: async (_runtime: IAgentRuntime) => {
-        console.warn("Direct client does not support stopping yet");
-    },
 };
 
-export default AutoClientInterface;
+const autoPlugin: Plugin = {
+    name: "auto",
+    description: "Auto client plugin",
+    clients: [AutoClientInterface],
+};
+export default autoPlugin;
