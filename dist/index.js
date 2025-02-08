@@ -12,21 +12,24 @@ var AutoClient = class {
       60 * 60 * 1e3
     );
   }
+  async stop() {
+    clearInterval(this.interval);
+  }
 };
 var AutoClientInterface = {
   name: "auto",
   start: async (runtime) => {
     const client = new AutoClient(runtime);
     return client;
-  },
-  stop: async (_runtime) => {
-    console.warn("Direct client does not support stopping yet");
   }
 };
-var index_default = AutoClientInterface;
+var autoPlugin = {
+  name: "auto",
+  description: "Auto client plugin",
+  clients: [AutoClientInterface]
+};
+var index_default = autoPlugin;
 export {
-  AutoClient,
-  AutoClientInterface,
   index_default as default
 };
 //# sourceMappingURL=index.js.map

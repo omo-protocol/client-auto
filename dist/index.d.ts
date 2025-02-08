@@ -1,10 +1,5 @@
-import { IAgentRuntime, Client } from '@elizaos/core';
+import { Plugin } from '@elizaos/core';
 
-declare class AutoClient {
-    interval: NodeJS.Timeout;
-    runtime: IAgentRuntime;
-    constructor(runtime: IAgentRuntime);
-}
-declare const AutoClientInterface: Client;
+declare const autoPlugin: Plugin;
 
-export { AutoClient, AutoClientInterface, AutoClientInterface as default };
+export { autoPlugin as default };
