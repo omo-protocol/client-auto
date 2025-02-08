@@ -22,6 +22,7 @@ export default defineConfig({
         "buffer",
         "rpc-websockets",
         "@solana/web3.js",
+        "@elizaos/core",
         // Add other modules you want to externalize
     ],
 });
