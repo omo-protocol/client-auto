@@ -1,5 +1,5 @@
 {
-  "name": "@elizaos/client-auto",
+  "name": "@elizaos-plugins/client-auto",
   "version": "0.25.6-alpha.1",
   "type": "module",
   "main": "dist/index.js",
@@ -19,6 +19,7 @@
     "dist"
   ],
   "dependencies": {
+    "@elizaos/core": "workspace:*",
     "@types/body-parser": "1.19.5",
     "@types/cors": "2.8.17",
     "@types/express": "5.0.0",
